@@ -1,7 +1,10 @@
 package com.nio.flash.activity.service;
 
-import com.nio.flash.activity.model.dto.UserProfileDto;
+import com.nio.flash.activity.domain.User;
+import com.nio.flash.activity.model.dto.response.UserProfileResDto;
 
 public interface UserService {
-    UserProfileDto getUserProfile(long userId);
+    UserProfileResDto getUserProfile(long userId);
+
+    void save(User userRegister);
 }

@@ -1,20 +1,31 @@
 package com.nio.flash.activity.service.impl;
 
-import com.nio.flash.activity.model.dto.UserProfileDto;
-import com.nio.flash.activity.model.entity.User;
+import com.nio.flash.activity.domain.User;
+import com.nio.flash.activity.infrastructure.repository.UserRepository;
+import com.nio.flash.activity.model.DO.UserDO;
+import com.nio.flash.activity.model.dto.response.UserProfileResDto;
 import com.nio.flash.activity.service.UserService;
-import com.nio.flash.activity.transfer.assembler.UserProfileAssembler;
+import com.nio.flash.activity.transfer.converter.UserDoConverter;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
-    UserProfileAssembler userProfileAssembler;
+    private static final UserDoConverter USER_DO_CONVERTER = UserDoConverter.INSTANCE;
+    private final UserRepository userRepository;
 
-    public UserServiceImpl(UserProfileAssembler userProfileAssembler) {
-        this.userProfileAssembler = userProfileAssembler;
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
-    public UserProfileDto getUserProfile(long userId) {
-        User user = User.builder().id(111L).name("darcy").address("aaa").build();
-        return userProfileAssembler.toDto(user);
+    public UserProfileResDto getUserProfile(long userId) {
+        return null;
+    }
+
+    @Override
+    public void save(User user) {
+        UserDO userDo = USER_DO_CONVERTER.toDo(user);
+//        UserDO userDo = new UserDO();
+        userRepository.saveOrUpdate(userDo);
     }
 }
