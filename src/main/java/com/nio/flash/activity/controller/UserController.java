@@ -2,7 +2,6 @@ package com.nio.flash.activity.controller;
 
 import com.nio.flash.activity.annotation.ResultHandler;
 import com.nio.flash.activity.common.Response;
-import com.nio.flash.activity.domain.User;
 import com.nio.flash.activity.model.dto.reqeust.UserRegisterReqDto;
 import com.nio.flash.activity.model.dto.response.UserProfileResDto;
 import com.nio.flash.activity.service.UserService;
@@ -28,7 +27,7 @@ public class UserController {
     @PostMapping("/register")
     @ResultHandler
     public Response<Object> register(@RequestBody UserRegisterReqDto userRegisterReqDto) {
-        User user = userRegisterReqDtoAssembler.toEntity(userRegisterReqDto);
+        var user = userRegisterReqDtoAssembler.toEntity(userRegisterReqDto);
         userService.save(user);
         return Response.success();
     }
