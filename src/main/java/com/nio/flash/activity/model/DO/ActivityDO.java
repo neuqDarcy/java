@@ -3,10 +3,11 @@ package com.nio.flash.activity.model.DO;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * 活动表
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
  * @since 2022-08-28
  */
 @TableName("activity")
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @Data
 public class ActivityDO implements Serializable {
 
@@ -28,22 +30,31 @@ public class ActivityDO implements Serializable {
     /**
      * 发起用户
      */
-    private Long owerId;
+    private Long ownerId;
+    /**
+     * 活动名称
+     */
+    @TableField(value = "activity_name")
+    private String name;
+    /**
+     * 活动简介
+     */
+    private String descr;
 
     /**
-     * 照片地址？
+     * 帖子id
      */
     private String pgcId;
 
     /**
      * 开始时间
      */
-    private LocalDateTime startTime;
+    private Long startTime;
 
     /**
      * 结束时间
      */
-    private LocalDateTime endTime;
+    private Long endTime;
 
     /**
      * 地点
@@ -58,7 +69,7 @@ public class ActivityDO implements Serializable {
     /**
      * 活动状态
      */
-    private Boolean status;
+    private Integer status;
 
     /**
      * 创建时间
