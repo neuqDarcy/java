@@ -26,7 +26,13 @@
     └── uitls-----工具类
 
 ```
-基本开发流程：
+## 基本开发流程：
 1. 根据数据库表生成 mapper 和 DO，生成器为：DaoAutoGenerator
 2. 根据业务定义 domain 层的 entity， 加入字段的校验逻辑
 3. 根据与前端约定的交互方式，定义 DTO，包括 response DTO 与 request DTO， 编写对应的 Assembler
+
+
+## 问题记录
+1. 后端使用的ID生成策略为雪花算法，64位，使用 Long 来存储，但是传到前端之后会有精度丢失问题，因为前端的Number是16位，
+因此 Dto 要把 Long 类型的 Id 改为 String
+

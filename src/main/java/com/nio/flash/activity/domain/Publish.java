@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Publish {
     private Long id;
+    private Long activityId;
     private Long ownerId;
     private String memberIds;
     private Long pgcId;

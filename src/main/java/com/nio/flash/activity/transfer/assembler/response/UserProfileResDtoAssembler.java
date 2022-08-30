@@ -8,8 +8,8 @@ import org.mapstruct.factory.Mappers;
 
 
 @Mapper
-public interface UserProfileDTOAssembler {
-    UserProfileDTOAssembler INSTANCE = Mappers.getMapper(UserProfileDTOAssembler.class);
+public interface UserProfileResDtoAssembler {
+    UserProfileResDtoAssembler INSTANCE = Mappers.getMapper(UserProfileResDtoAssembler.class);
     UserProfileResDto toDto(User user);
     UserProfileResDto toDto(Person person);
     User toEntity(UserProfileResDto userProfileResDto);
