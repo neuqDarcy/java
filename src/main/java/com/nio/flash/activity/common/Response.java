@@ -55,6 +55,14 @@ public class Response<T> {
                 .serverTime(System.currentTimeMillis() / 1000L)
                 .build();
     }
+    public static <T> Response<T> success(String message) {
+        return Response.<T>builder()
+                .resultCode(SUCCESS)
+                .requestId(UUID.randomUUID().toString().replace("-", ""))
+                .message(message)
+                .serverTime(System.currentTimeMillis() / 1000L)
+                .build();
+    }
 
     public static <T> Response<T> success(T data) {
         return Response.<T>builder()

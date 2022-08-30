@@ -10,6 +10,7 @@ import com.nio.flash.activity.service.ActivityService;
 import com.nio.flash.activity.transfer.assembler.request.CreateActivityReqDtoAssembler;
 import com.nio.flash.activity.transfer.assembler.response.ActivitiesBriefResDtoAssembler;
 import com.nio.flash.activity.transfer.assembler.response.ActivityDetailResDtoAssembler;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,7 +53,7 @@ public class ActivityController {
      */
     @PostMapping
     @ResultHandler
-    public Response<String> create(@RequestBody CreateActivityReqDto activityReqDto) {
+    public Response<String> create(@RequestBody @Validated CreateActivityReqDto activityReqDto) {
         Activity activity = CREATE_ACTIVITY_REQ_DTO_ASSEMBLER.toEntity(activityReqDto);
         activityService.save(activity);
         return Response.success();
