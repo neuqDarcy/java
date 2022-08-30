@@ -9,6 +9,9 @@ import com.nio.flash.activity.service.UserService;
 import com.nio.flash.activity.transfer.assembler.request.UserRegisterReqDtoAssembler;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 用户相关
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -20,14 +23,20 @@ public class UserController {
 
     private UserService userService;
 
+    /**
+     * 根据ID查个人主页
+     */
     @GetMapping("/profile/{id}")
     public Response<UserProfileResDto> getProfileById(@PathVariable("id") long id) {
         return Response.success(null);
     }
 
+    /**
+     * 用户注册
+     */
     @PostMapping("/register")
     @ResultHandler
-    public Response<Object> register(@RequestBody UserRegisterReqDto userRegisterReqDto) {
+    public Response<String> register(@RequestBody UserRegisterReqDto userRegisterReqDto) {
         User user = userRegisterReqDtoAssembler.toEntity(userRegisterReqDto);
         userService.save(user);
         return Response.success();

@@ -15,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Response<T> {
 
+    private static final String SUCCESS = "success";
     @JsonProperty("request_id")
     private String requestId;
 
@@ -49,6 +50,7 @@ public class Response<T> {
 
     public static <T> Response<T> success() {
         return Response.<T>builder()
+                .resultCode(SUCCESS)
                 .requestId(UUID.randomUUID().toString().replace("-", ""))
                 .serverTime(System.currentTimeMillis() / 1000L)
                 .build();
