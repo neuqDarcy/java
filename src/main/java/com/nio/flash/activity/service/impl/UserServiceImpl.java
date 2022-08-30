@@ -1,5 +1,7 @@
 package com.nio.flash.activity.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.nio.flash.activity.domain.User;
 import com.nio.flash.activity.infrastructure.repository.UserRepository;
 import com.nio.flash.activity.model.DO.UserDO;
@@ -28,4 +30,16 @@ public class UserServiceImpl implements UserService {
 //        UserDO userDo = new UserDO();
         userRepository.saveOrUpdate(userDo);
     }
+
+    @Override
+    public boolean login(User user) {
+        UserDO userDo = USER_DO_CONVERTER.toDo(user);
+        LambdaQueryWrapper<UserDO> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserDO::getPhone, userDo.getPhone());
+        wrapper.eq(UserDO::getPassword, userDo.getPassword());
+        UserDO one = userRepository.getOne(wrapper);
+        return one != null;
+    }
+
+
 }

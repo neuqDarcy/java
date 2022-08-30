@@ -16,6 +16,8 @@ import java.util.UUID;
 public class Response<T> {
 
     private static final String SUCCESS = "success";
+    private static final String FAILURE = "failure";
+
     @JsonProperty("request_id")
     private String requestId;
 
@@ -77,6 +79,14 @@ public class Response<T> {
                 .requestId(UUID.randomUUID().toString().replace("-", ""))
                 .serverTime(System.currentTimeMillis() / 1000L)
                 .data(data)
+                .build();
+    }
+
+    public static <T> Response<T> failure() {
+        return Response.<T>builder()
+                .resultCode(FAILURE)
+                .requestId(UUID.randomUUID().toString().replace("-", ""))
+                .serverTime(System.currentTimeMillis() / 1000L)
                 .build();
     }
 
