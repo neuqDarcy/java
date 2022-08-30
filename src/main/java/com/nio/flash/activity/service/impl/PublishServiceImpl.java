@@ -21,7 +21,10 @@ public class PublishServiceImpl implements PublishService {
     @Override
     public void save(Publish publish) {
         PublishDO publishDO = PUBLISH_DO_CONVERTER.toDo(publish);
-        publishRepository.save(publishDO);
+        if (null != publish.getId()) {
+            publishDO.setId(publish.getId());
+        }
+        publishRepository.saveOrUpdate(publishDO);
     }
 
     @Override

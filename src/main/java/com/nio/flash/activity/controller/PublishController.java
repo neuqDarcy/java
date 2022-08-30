@@ -8,7 +8,9 @@ import com.nio.flash.activity.model.dto.reqeust.ModifyPublishReqDto;
 import com.nio.flash.activity.model.dto.response.PublishDetailResDto;
 import com.nio.flash.activity.service.PublishService;
 import com.nio.flash.activity.transfer.assembler.request.CreatePublishReqDtoAssembler;
+import com.nio.flash.activity.transfer.assembler.request.ModifyPublishReqDtoAssembler;
 import com.nio.flash.activity.transfer.assembler.response.PublishResDtoAssembler;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +24,7 @@ public class PublishController {
 
     public static final CreatePublishReqDtoAssembler CREATE_PUBLISH_REQ_DTO_ASSEMBLER = CreatePublishReqDtoAssembler.INSTANCE;
     public static final PublishResDtoAssembler PUBLISH_DETAIL_RES_DTO_ASSEMBLER = PublishResDtoAssembler.INSTANCE;
+    public static final ModifyPublishReqDtoAssembler MODIFY_PUBLISH_REQ_DTO_ASSEMBLER = ModifyPublishReqDtoAssembler.INSTANCE;
 
     PublishService publishService;
 
@@ -61,9 +64,17 @@ public class PublishController {
 
     /**
      * 修改发布工单
+     * 注意：activity_id 必填
+     * 该接口应用于以下场景:
+     * 1. 修改工单状态
+     * 2. 当运营人员处理工单时，将staff_id改为该人员工号
      */
     @PutMapping
-    public Response<String> modify(@RequestBody ModifyPublishReqDto modifyPublishReqDto) {
+    @ResultHandler
+    public Response<String> modify(@RequestBody @Validated ModifyPublishReqDto modifyPublishReqDto) {
+        Long activityId = Long.valueOf(modifyPublishReqDto.getActivityId());
+        Publish oldItem = publishService.getDetailById(activityId);
+        publishService.save(MODIFY_PUBLISH_REQ_DTO_ASSEMBLER.updateEntityFromDto(modifyPublishReqDto, oldItem));
         return Response.success();
     }
 
