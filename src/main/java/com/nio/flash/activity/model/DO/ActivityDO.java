@@ -42,6 +42,11 @@ public class ActivityDO implements Serializable {
     private String descr;
 
     /**
+     * 封面url
+     */
+    private String coverUrl;
+
+    /**
      * 帖子id
      */
     private String pgcId;

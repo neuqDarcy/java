@@ -9,6 +9,7 @@ import lombok.Data;
 public class ActivityDetailResDto {
     private long id;
     private String name;
+    private String coverUrl;
     private String place;
     private String ownerId;
     private String ownerName;

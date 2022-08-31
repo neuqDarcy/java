@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 发布活动
+ * 发布
  */
 @RestController
 @RequestMapping("/publish")

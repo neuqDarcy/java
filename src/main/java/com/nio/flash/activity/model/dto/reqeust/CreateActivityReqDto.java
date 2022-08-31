@@ -23,6 +23,10 @@ public class CreateActivityReqDto {
      */
     private String descr;
     /**
+     * 头像/封面Url
+     */
+    private String coverUrl;
+    /**
      * 帖子id
      */
     private long pgcId;

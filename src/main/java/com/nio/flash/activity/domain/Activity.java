@@ -13,6 +13,7 @@ public class Activity {
     private long ownerId;
     private String name;
     private String descr;
+    private String coverUrl;
     private String memberIds;
     private long pgcId;
     private long startTime;
