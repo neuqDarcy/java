@@ -22,6 +22,7 @@ public class Person {
     private Integer status;
     private long createTime;
     private long updateTime;
+    private String password;
 
     public void setAge(Integer age) {
         if (age < 0 || age > 120) {

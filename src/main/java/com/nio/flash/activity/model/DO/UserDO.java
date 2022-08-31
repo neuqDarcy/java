@@ -82,4 +82,9 @@ public class UserDO implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateTime;
+
+    /**
+     * 密码
+     */
+    private String password;
 }

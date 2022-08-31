@@ -7,4 +7,6 @@ public interface UserService {
     UserProfileResDto getUserProfile(long userId);
 
     void save(User userRegister);
+
+    boolean login(User useLogin);
 }
