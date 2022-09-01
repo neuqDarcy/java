@@ -19,9 +19,10 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public void save(Activity activity) {
+    public Long save(Activity activity) {
         ActivityDO activityDO = ACTIVITY_DO_CONVERTER.toDo(activity);
         activityRepository.saveOrUpdate(activityDO);
+        return activityDO.getId();
     }
 
     @Override

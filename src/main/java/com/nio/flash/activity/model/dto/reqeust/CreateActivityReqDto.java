@@ -29,6 +29,10 @@ public class CreateActivityReqDto {
      */
     private String coverUrl;
     /**
+     * 轮播图url数组
+     */
+    private String[] imgUrls;
+    /**
      * 帖子id
      */
     private long pgcId;

@@ -2,17 +2,13 @@ package com.nio.flash.activity.controller;
 
 import com.nio.flash.activity.annotation.ResultHandler;
 import com.nio.flash.activity.common.Response;
-import com.nio.flash.activity.domain.Nioer;
 import com.nio.flash.activity.domain.User;
 import com.nio.flash.activity.model.dto.reqeust.UserLoginReqDto;
 import com.nio.flash.activity.model.dto.reqeust.UserRegisterReqDto;
 import com.nio.flash.activity.model.dto.response.UserProfileResDto;
-import com.nio.flash.activity.service.NioerService;
 import com.nio.flash.activity.service.UserService;
 import com.nio.flash.activity.transfer.assembler.request.UserLoginReqDtoAssembler;
 import com.nio.flash.activity.transfer.assembler.request.UserRegisterReqDtoAssembler;
-import lombok.experimental.Accessors;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**

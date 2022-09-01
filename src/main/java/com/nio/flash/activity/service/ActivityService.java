@@ -5,7 +5,7 @@ import com.nio.flash.activity.domain.Activity;
 import java.util.List;
 
 public interface ActivityService {
-    void save(Activity activity);
+    Long save(Activity activity);
 
     List<Activity> getList();
 

@@ -14,6 +14,7 @@ public class Activity {
     private String name;
     private String descr;
     private String coverUrl;
+    private String[] imgUrls;
     private String memberIds;
     private long pgcId;
     private long startTime;
@@ -48,4 +49,10 @@ public class Activity {
         this.endTime = endTime;
         return this;
     }
+
+    public String toUrlStr(String[] urls) {
+        return String.join(",", urls);
+    }
+
+
 }

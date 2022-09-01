@@ -55,7 +55,6 @@ public class ActivityController {
     @ResultHandler
     public Response<String> create(@RequestBody @Validated CreateActivityReqDto activityReqDto) {
         Activity activity = CREATE_ACTIVITY_REQ_DTO_ASSEMBLER.toEntity(activityReqDto);
-        activityService.save(activity);
-        return Response.success();
+        return Response.success(activityService.save(activity).toString());
     }
 }

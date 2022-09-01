@@ -45,6 +45,10 @@ public class ActivityDO implements Serializable {
      * 封面url
      */
     private String coverUrl;
+    /**
+     * 轮播图url，逗号分割
+     */
+    private String imgUrls;
 
     /**
      * 帖子id
@@ -87,5 +91,10 @@ public class ActivityDO implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateTime;
+
+
+    public String[] toUrls(String rawUrl) {
+        return rawUrl.split(",");
+    }
 
 }
