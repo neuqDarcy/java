@@ -64,7 +64,7 @@ public class PublishController {
 
     /**
      * 修改发布工单
-     * 注意：activity_id 必填
+     * 注意：id 必填,id 为工单id
      * 该接口应用于以下场景:
      * 1. 修改工单状态
      * 2. 当运营人员处理工单时，将staff_id改为该人员工号
@@ -72,7 +72,7 @@ public class PublishController {
     @PutMapping
     @ResultHandler
     public Response<String> modify(@RequestBody @Validated ModifyPublishReqDto modifyPublishReqDto) {
-        Long activityId = Long.valueOf(modifyPublishReqDto.getActivityId());
+        Long activityId = Long.valueOf(modifyPublishReqDto.getId());
         Publish oldItem = publishService.getDetailById(activityId);
         publishService.save(MODIFY_PUBLISH_REQ_DTO_ASSEMBLER.updateEntityFromDto(modifyPublishReqDto, oldItem));
         return Response.success();

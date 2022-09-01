@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class ModifyPublishReqDto {
-    @NotNull(message = "activity_id not null")
-    private String activityId;
+    @NotNull(message = "id not null")
+    private String id;
     private Long staffId;
     private Integer status;
 }
