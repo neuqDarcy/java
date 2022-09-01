@@ -25,6 +25,9 @@ public class Person {
     private String password;
 
     public void setAge(Integer age) {
+        if (null == age) {
+            return;
+        }
         if (age < 0 || age > 120) {
             throw new ValidationException("invalid age");
         }
