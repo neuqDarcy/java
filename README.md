@@ -40,4 +40,6 @@
 并在类上标注\
 ```@Mapper(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)```
 
-3. 如何校验接口层的入参，也就是校验 RequestDto 的每个属性。查到可以使用 @Valid ，但在这个项目里不生效，需要看一下。 
+3. 如何校验接口层的入参，也就是校验 RequestDto 的每个属性。可以通过 @Valid 和 @Notnull 等注解来实现，为了简化开发，在controller层
+做了切面来统一管理异常
+4. 
