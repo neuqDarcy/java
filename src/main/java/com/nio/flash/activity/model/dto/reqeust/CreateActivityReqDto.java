@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
@@ -12,6 +13,7 @@ public class CreateActivityReqDto {
     /**
      * 申请人ID
      */
+    @NotNull(message = "owner_id is null")
     private long ownerId;
     /**
      * 活动名称
@@ -37,9 +39,11 @@ public class CreateActivityReqDto {
     /**
      * 活动开始时间
      */
+    @NotNull(message = "start_time is null")
     private long startTime;
     /**
      * 活动结束时间
      */
+    @NotNull(message = "end_time is null")
     private long endTime;
 }
