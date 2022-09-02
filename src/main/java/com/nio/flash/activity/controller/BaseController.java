@@ -13,6 +13,6 @@ public class BaseController {
      */
     @GetMapping("/status")
     public String getStatus() {
-        return "success";
+        return "开摆开摆";
     }
 }
