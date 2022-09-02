@@ -2,6 +2,7 @@ package com.nio.flash.activity.model.DO;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.io.Serializable;
  * @since 2022-08-28
  */
 @Data
+@TableName("apply")
 public class ApplyDO implements Serializable {
 
     private static final long serialVersionUID = 1L;

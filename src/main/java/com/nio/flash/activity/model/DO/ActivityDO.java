@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 
@@ -94,7 +95,7 @@ public class ActivityDO implements Serializable {
 
 
     public String[] toUrls(String rawUrl) {
-        return rawUrl.split(",");
+        return StringUtils.isEmpty(rawUrl) ? new String[]{} : rawUrl.split(",");
     }
 
 }

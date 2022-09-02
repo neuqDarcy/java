@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 
-@Mapper
+@Mapper(uses = {ApplyMembersResDtoAssembler.class})
 public interface ActivityDetailResDtoAssembler {
     ActivityDetailResDtoAssembler INSTANCE = Mappers.getMapper(ActivityDetailResDtoAssembler.class);
     ActivityDetailResDto toDto(Activity activity);
