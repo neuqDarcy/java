@@ -14,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 发布
@@ -36,8 +37,12 @@ public class PublishController {
      * 查询工单列表
      */
     @GetMapping("/list")
-    public Response<List<PublishDetailResDto>> getList() {
+    public Response<List<PublishDetailResDto>> getList(@RequestParam(value = "status", required = false) Integer status) {
         List<Publish> publishes = publishService.getList();
+        if (null != status) {
+            List<Publish> publishByStatus = publishes.stream().filter(item -> item.getStatus().equals(status)).collect(Collectors.toList());
+            return Response.success(PUBLISH_DETAIL_RES_DTO_ASSEMBLER.toDtoList(publishByStatus));
+        }
         return Response.success(PUBLISH_DETAIL_RES_DTO_ASSEMBLER.toDtoList(publishes));
     }
 
