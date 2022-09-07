@@ -26,6 +26,7 @@
     └── uitls-----工具类
 
 ```
+开发文档：https://nio.feishu.cn/docx/doxcnUSCLglqN1lUwc5V8wYit8c
 ## 基本开发流程：
 1. 根据数据库表生成 mapper 和 DO，生成器为：DaoAutoGenerator
 2. 根据业务定义 domain 层的 entity， 加入字段的校验逻辑
